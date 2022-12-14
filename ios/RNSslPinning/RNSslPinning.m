@@ -227,6 +227,7 @@ RCT_EXPORT_METHOD(fetch:(NSString *)url obj:(NSDictionary *)obj callback:(RCTRes
     }
     else if (pkPinning){
         policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModePublicKey withPinnedCertificates:certificates];
+        policy.validatesDomainName = false;
     }
     else if (certBase64) {
         NSURL *certData = [NSURL URLWithString: [NSString stringWithFormat:@"data:application/octet-stream;base64,%@", certBase64]];
